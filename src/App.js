@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import api from "./services/api";
 
 import {
   SafeAreaView,
@@ -11,6 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import api from "./services/api";
 export default function App() {
   const [ repositories, setRepositories ] = useState([]);
 
@@ -24,8 +24,6 @@ export default function App() {
     const response = await api.post(`repositories/${id}/like`);
 
     const likedRepository = response.data;
-    
-    console.log(likedRepository);
 
     const repositoriesUpdated = repositories.map(repository => {
       if (repository.id === id) {
@@ -61,7 +59,7 @@ export default function App() {
               style={styles.likeText}
               testID={`repository-likes-${repository.id}`}
             >
-              {repository.likes} curtida
+              {repository.likes} curtidas
             </Text>
           </View>
 
